@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Pokeselect({ pokeTypes, setSelectedType, }) {
+export default function Pokeselect({ pokeTypes, setSelectedType }) {
   return (
     <div>
       <select onChange={(e) => {

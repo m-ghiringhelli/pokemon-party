@@ -18,6 +18,14 @@ export default function Main() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetchByType(selectedType);
+      setPokedex(data);
+    };
+    fetchData();
+  }, [selectedType]);
+
   return (
     <div>
       <Pokeselect {...{ pokeTypes, setSelectedType }}/>
