@@ -9,3 +9,8 @@ export async function fetchPokemonTypes() {
   const data = await resp.json();
   return data.map((item) => item.type);
 }
+
+export async function fetchByType() {
+  const params = new URLSearchParams();
+  console.log(params);
+}
