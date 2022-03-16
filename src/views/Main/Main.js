@@ -6,6 +6,7 @@ import Pokeselect from '../../components/Pokeselect/Pokeselect';
 export default function Main() {
   const [pokedex, setPokedex] = useState([]);
   const [pokeTypes, setPokeTypes] = useState([]);
+  const [selectedType, setSelectedType] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +26,7 @@ export default function Main() {
 
   return (
     <div>
-      <Pokeselect pokeTypes={pokeTypes}/>
+      <Pokeselect {...{ pokeTypes, setSelectedType }}/>
       <Pokelist pokedex={pokedex} />
     </div>
   );
