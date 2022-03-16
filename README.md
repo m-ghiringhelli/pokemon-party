@@ -12,3 +12,7 @@ II) state
 III) render
     A) pokecard
     B) dropdown
+
+AFTER BREAK:
+get dropdown working
+style cards

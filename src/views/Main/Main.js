@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { fetchPokemon, fetchPokemonTypes } from '../../services/pokemon';
+import Pokelist from '../../components/Pokelist/Pokelist';
 
 export default function Main() {
   const [pokedex, setPokedex] = useState([]);
+  const [pokeTypes, setPokeTypes] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,18 +17,14 @@ export default function Main() {
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchPokemonTypes();
-      console.log(data);
+      setPokeTypes(data);
     };
     fetchData();
   }, []);
 
   return (
     <div>
-      {pokedex.map((monster) => (
-        <div key={monster.id}>
-          <p>{monster.pokemon}</p>
-        </div>
-      ))}
+      <Pokelist pokedex={pokedex} />
     </div>
   );
 }
