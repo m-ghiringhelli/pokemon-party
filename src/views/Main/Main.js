@@ -21,7 +21,7 @@ export default function Main() {
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchByType(selectedType);
-      setPokedex(data);
+      if (selectedType) setPokedex(data);
     };
     fetchData();
   }, [selectedType]);
