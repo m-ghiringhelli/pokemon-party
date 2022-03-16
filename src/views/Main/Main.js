@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchPokemon, fetchPokemonTypes } from '../../services/pokemon';
 import Pokelist from '../../components/Pokelist/Pokelist';
+import Pokeselect from '../../components/Pokeselect/Pokeselect';
 
 export default function Main() {
   const [pokedex, setPokedex] = useState([]);
@@ -24,6 +25,7 @@ export default function Main() {
 
   return (
     <div>
+      <Pokeselect pokeTypes={pokeTypes}/>
       <Pokelist pokedex={pokedex} />
     </div>
   );
