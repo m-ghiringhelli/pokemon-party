@@ -1,0 +1,36 @@
+.pokelist {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pokecard {
+    border: 2px solid black;
+    margin: 5px;
+    border-radius: 20px;
+    background-color: rgb(191, 194, 196);
+}
+
+.name {
+    font-weight: bold;
+    font-size: 1.2rem;
+    width: 60%;
+    margin: 20px auto 0px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.pokecard img {
+    width: 300px;
+    border: 1px solid black;
+    margin: 20px;
+    background-color: white;
+}
+
+.info {
+    background-color: white;
+    width: 50%;
+    margin: 0px auto 20px;
+    padding: 10px 0px;
+    border-radius: 15px;
+}

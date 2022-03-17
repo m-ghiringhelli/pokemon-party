@@ -1,13 +1,11 @@
 import React from 'react';
+import Pokecard from '../Pokecard/Pokecard';
+import './Pokelist.css';
 
 export default function Pokelist({ pokedex }) {
   return (
     <div>
-      {pokedex.map((monster) => (
-        <div key={monster.id}>
-          <p>{monster.pokemon}, {monster.type_1}</p>
-        </div>
-      ))}
+      <Pokecard pokedex={pokedex} />
     </div>
   );
 }
