@@ -11,6 +11,7 @@ export default function Main() {
   const [selectedType, setSelectedType] = useState('');
   const [searchText, setSearchText] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,6 +20,7 @@ export default function Main() {
         setPokedex(data);
         const typesData = await fetchPokemonTypes();
         setPokeTypes(typesData);
+        setLoading(false);
       } catch (e) {
         setErrorMessage('Whoopsie-doodle. Something is broken. Try it again maybe?');
       }
@@ -31,6 +33,7 @@ export default function Main() {
       try {
         const data = await fetchByType(selectedType);
         if (selectedType) setPokedex(data);
+        setLoading(false);
       } catch (e) {
         setErrorMessage(`Looks like we can't find that type of pokemon. Refresh the page to view all of them.`);
       }
@@ -43,6 +46,8 @@ export default function Main() {
       return monster.pokemon.includes(searchText);
     }));
   };
+
+  if (loading) return <div className="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>;
 
   return (
     <div>
