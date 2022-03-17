@@ -10,34 +10,43 @@ export default function Main() {
   const [pokeTypes, setPokeTypes] = useState([]);
   const [selectedType, setSelectedType] = useState('');
   const [searchText, setSearchText] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchPokemon();
-      setPokedex(data);
-      const typesData = await fetchPokemonTypes();
-      setPokeTypes(typesData);
+      try {
+        const data = await fetchPokemon();
+        setPokedex(data);
+        const typesData = await fetchPokemonTypes();
+        setPokeTypes(typesData);
+      } catch (e) {
+        setErrorMessage('Whoopsie-doodle. Something is broken. Try it again maybe?');
+      }
     };
     fetchData();
   }, []);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchByType(selectedType);
-      if (selectedType) setPokedex(data);
+      try {
+        const data = await fetchByType(selectedType);
+        if (selectedType) setPokedex(data);
+      } catch (e) {
+        setErrorMessage(`Looks like we can't find that type of pokemon. Refresh the page to view all of them.`);
+      }
     };
     fetchData();
   }, [selectedType]);
 
   const setPokedexFromSearch = () => {
     setPokedex(pokedex.filter(monster => {
-      console.log(searchText);
       return monster.pokemon.includes(searchText);
     }));
   };
 
   return (
     <div>
+      <p>{errorMessage}</p>
       <div className='controls'>
         <Pokeselect {...{ pokeTypes, setSelectedType }}/>
         <Pokesearch {...{ setSearchText, searchText, setPokedex, pokedex, setPokedexFromSearch }} />

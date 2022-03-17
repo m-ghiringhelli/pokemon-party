@@ -16,3 +16,8 @@ III) render
 AFTER BREAK:
 get dropdown working
 style cards
+
+next up:
+loading state
+10 on first page
+add all option
