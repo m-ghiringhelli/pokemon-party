@@ -28,12 +28,19 @@ export default function Main() {
     };
     fetchData();
   }, [selectedType]);
-  console.log(searchText);
+
+  const setPokedexFromSearch = () => {
+    setPokedex(pokedex.filter(monster => {
+      console.log(searchText);
+      return monster.pokemon.includes(searchText);
+    }));
+  };
+
   return (
     <div>
       <div className='controls'>
         <Pokeselect {...{ pokeTypes, setSelectedType }}/>
-        <Pokesearch {...{ setSearchText }} />
+        <Pokesearch {...{ setSearchText, searchText, setPokedex, pokedex, setPokedexFromSearch }} />
       </div>
       <Pokelist pokedex={pokedex} />
     </div>
