@@ -11,7 +11,9 @@ export default function Pokecard({ pokedex }) {
           <div className="info">
             <p>height: {monster.height / 10}m</p>
             <p>weight: {monster.weight / 10}kg</p>
-            <p>{monster.type_1} {monster.type_2}</p>
+            <p>{monster.type_1 + ' '}
+              {((monster.type_2) === 'NA') ? '' : monster.type_2}
+            </p>
           </div>
         </div>
       ))}
