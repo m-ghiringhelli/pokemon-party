@@ -1,9 +1,10 @@
 import React from 'react';
+import './Pokeselect.css';
 
 export default function Pokeselect({ pokeTypes, setSelectedType }) {
   return (
     <div>
-      <select onChange={(e) => {
+      <select className='pokepicker' onChange={(e) => {
         setSelectedType(e.target.value);
       }}>
         <option selected disabled>- sort by type -</option>
