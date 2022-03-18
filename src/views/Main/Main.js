@@ -13,18 +13,20 @@ export default function Main() {
   const [searchText, setSearchText] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(true);
-  const [alphabetized, setAlphabetized] = useState(0);
+  const [alphabetized, setAlphabetized] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        //fetch default data
         const typesData = await fetchPokemonTypes();
         setPokeTypes(typesData);
-        if (!selectedType) {
+        if (!selectedType && !alphabetized) {
           const data = await fetchPokemon();
           setPokedex(data);
-        } else {
-          const data = await fetchByType(selectedType);
+          //if a type is chosen, filter the data
+        } else if (selectedType || alphabetized) {
+          const data = await fetchByType(selectedType, alphabetized);
           setPokedex(data);
         }
         setLoading(false);
@@ -33,7 +35,7 @@ export default function Main() {
       }
     };
     fetchData();
-  }, [selectedType]);
+  }, [alphabetized, selectedType]);
 
   // useEffect(() => {
   //   const fetchData = async () => {
