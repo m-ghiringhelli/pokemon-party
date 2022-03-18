@@ -6,7 +6,7 @@ export default function Pokecard({ pokedex }) {
   return (
     <div className="pokelist">
       {tenPokemon.map((monster) => (
-        <div className="pokecard" key={monster.id}>
+        <div className="pokecard" key={monster.id} style={{ backgroundColor: monster.color_1 }}>
           <p className="name">{monster.pokemon.toUpperCase()}</p>
           <img src={monster.url_image} />
           <div className="info">
