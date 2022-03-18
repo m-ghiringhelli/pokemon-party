@@ -13,7 +13,7 @@ export async function fetchPokemonTypes() {
 export async function fetchByType(type, direction) {
   const params = new URLSearchParams();
 
-  if (type) params.set('type', type);
+  if (type && type !== 'all') params.set('type', type);
   if (direction) {
     params.set('sort', 'pokemon');
     params.set('direction', direction);

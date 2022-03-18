@@ -20,13 +20,14 @@ export default function Main() {
       try {
         //fetch default data
         const typesData = await fetchPokemonTypes();
-        setPokeTypes(typesData);
+        setPokeTypes(['all', ...typesData]);
+        let data = [];
         if (!selectedType && !alphabetized) {
-          const data = await fetchPokemon();
+          data = await fetchPokemon();
           setPokedex(data);
           //if a type is chosen, filter the data
         } else if (selectedType || alphabetized) {
-          const data = await fetchByType(selectedType, alphabetized);
+          data = await fetchByType(selectedType, alphabetized);
           setPokedex(data);
         }
         setLoading(false);
