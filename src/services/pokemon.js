@@ -1,5 +1,5 @@
 export async function fetchPokemon() {
-  const resp = await fetch('https://pokedex-alchemy.herokuapp.com/api/pokedex');
+  const resp = await fetch('https://pokedex-alchemy.herokuapp.com/api/pokedex?perPage=801');
   const data = await resp.json();
   return data.results;
 }
@@ -18,14 +18,8 @@ export async function fetchByType(type, direction) {
     params.set('sort', 'pokemon');
     params.set('direction', direction);
   }
-  
-  const resp = await fetch(`https://pokedex-alchemy.herokuapp.com/api/pokedex?${params.toString()}`);
+
+  const resp = await fetch(`https://pokedex-alchemy.herokuapp.com/api/pokedex?perPage=801&${params.toString()}`);
   const data = await resp.json();
   return data.results;
 }
-
-// export async function fetchAlphabetical(direction) {
-//   const resp = await fetch(`https://pokedex-alchemy.herokuapp.com/api/pokedex?sort=pokemon&direction=${direction}`);
-//   const data = await resp.json();
-//   return data.results;
-// }

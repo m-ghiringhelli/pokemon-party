@@ -2,9 +2,10 @@ import React from 'react';
 import './Pokecard.css';
 
 export default function Pokecard({ pokedex }) {
+  const tenPokemon = pokedex.slice(0, 10);
   return (
     <div className="pokelist">
-      {pokedex.map((monster) => (
+      {tenPokemon.map((monster) => (
         <div className="pokecard" key={monster.id}>
           <p className="name">{monster.pokemon.toUpperCase()}</p>
           <img src={monster.url_image} />

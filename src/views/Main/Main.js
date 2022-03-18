@@ -37,51 +37,10 @@ export default function Main() {
     fetchData();
   }, [alphabetized, selectedType]);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       setAlphabetized(1);
-  //       if (selectedType) setPokedex(data);
-  //       setLoading(false);
-  //     } catch (e) {
-  //       setErrorMessage(`Looks like we can't find that type of pokemon. Refresh the page to view all of them.`);
-  //     }
-  //   };
-  //   fetchData();
-  // }, [selectedType]);
-
-  // useEffect(() => {
-  //   const alphabetize = () => {
-  //     if (alphabetized) {
-  //       pokedex.sort(function(a, b) {
-  //         if (a.pokemon.toLowerCase() < b.pokemon.toLowerCase()) return -1;
-  //         if (a.pokemon.toLowerCase() > b.pokemon.toLowerCase()) return 1;
-  //         return 0;
-  //       });
-  //       setPokedex(pokedex);
-  //       console.log(pokedex);
-  //     }
-  //   };
-  //   alphabetize();
-  // }, [alphabetized, pokedex]);
-
   const setPokedexFromSearch = () => {
     setPokedex(pokedex.filter(monster => {
       return monster.pokemon.includes(searchText);
     }));
-  };
-
-  const alphabetize = () => {
-    // if (alphabetized) {
-    pokedex.sort(function(a, b) {
-      if (a.pokemon.toLowerCase() < b.pokemon.toLowerCase()) return -1;
-      if (a.pokemon.toLowerCase() > b.pokemon.toLowerCase()) return 1;
-      return 0;
-    });
-    setPokedex(pokedex);
-    setAlphabetized(true);
-    // console.log(pokedex);
-    // }
   };
 
   if (loading) return <div className="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>;
@@ -92,7 +51,7 @@ export default function Main() {
       <div className='controls'>
         <Pokeselect {...{ pokeTypes, setSelectedType }} />
         <Pokesearch {...{ setSearchText, searchText, setPokedex, pokedex, setPokedexFromSearch, setAlphabetized }} />
-        <Alphabetical {...{ setAlphabetized, alphabetize }} />
+        <Alphabetical {...{ setAlphabetized }} />
       </div>
       <Pokelist pokedex={pokedex} />
     </div>
