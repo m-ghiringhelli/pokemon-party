@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchPokemon, fetchPokemonTypes, fetchByType, fetchAlphabetical } from '../../services/pokemon';
+import { fetchPokemon, fetchPokemonTypes, fetchByType } from '../../services/pokemon';
 import Pokelist from '../../components/Pokelist/Pokelist';
 import Pokeselect from '../../components/Pokeselect/Pokeselect';
 import Pokesearch from '../../components/Pokesearch/Pokesearch';

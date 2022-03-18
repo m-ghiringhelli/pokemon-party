@@ -1,7 +1,7 @@
 import React from 'react';
 import './Alphabetical.css';
 
-export default function Alphabetical({ setAlphabetized, alphabetize }) {
+export default function Alphabetical({ setAlphabetized }) {
   const alphabetizeAtoZ = () => {
     setAlphabetized('asc');
   };
