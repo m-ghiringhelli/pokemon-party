@@ -3,6 +3,7 @@ import { fetchPokemon, fetchPokemonTypes, fetchByType } from '../../services/pok
 import Pokelist from '../../components/Pokelist/Pokelist';
 import Pokeselect from '../../components/Pokeselect/Pokeselect';
 import Pokesearch from '../../components/Pokesearch/Pokesearch';
+import Alphabetical from '../../components/Alphabetical/Alphabetical';
 import './Main.css';
 
 export default function Main() {
@@ -12,6 +13,7 @@ export default function Main() {
   const [searchText, setSearchText] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(true);
+  const [alphabetized, setAlphabetized] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,6 +57,7 @@ export default function Main() {
       <div className='controls'>
         <Pokeselect {...{ pokeTypes, setSelectedType }}/>
         <Pokesearch {...{ setSearchText, searchText, setPokedex, pokedex, setPokedexFromSearch }} />
+        <Alphabetical />
       </div>
       <Pokelist pokedex={pokedex} />
     </div>

@@ -4,7 +4,7 @@ import './Pokelist.css';
 
 export default function Pokelist({ pokedex }) {
   return (
-    <div>
+    <div className='pokelist'>
       <Pokecard pokedex={pokedex} />
     </div>
   );
