@@ -10,9 +10,13 @@ export async function fetchPokemonTypes() {
   return data.map((item) => item.type);
 }
 
-export async function fetchByType(type) {
+export async function fetchByType(type, direction) {
   const params = new URLSearchParams();
+
   if (type) params.set('type', type);
+  if (direction) params.set('direction', direction);
+  console.log(params.toString());
+
   const resp = await fetch(`https://pokedex-alchemy.herokuapp.com/api/pokedex?${params.toString()}`);
   const data = await resp.json();
   return data.results;

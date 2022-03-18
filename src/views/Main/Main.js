@@ -13,36 +13,40 @@ export default function Main() {
   const [searchText, setSearchText] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(true);
-  const [alphabetized, setAlphabetized] = useState(false);
+  const [alphabetized, setAlphabetized] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchPokemon();
-        setPokedex(data);
         const typesData = await fetchPokemonTypes();
         setPokeTypes(typesData);
+        if (!selectedType) {
+          const data = await fetchPokemon();
+          setPokedex(data);
+        } else {
+          const data = await fetchByType(selectedType);
+          setPokedex(data);
+        }
         setLoading(false);
       } catch (e) {
         setErrorMessage('Whoopsie-doodle. Something is broken. Try it again maybe?');
       }
     };
     fetchData();
-  }, []);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setAlphabetized(false);
-        const data = await fetchByType(selectedType);
-        if (selectedType) setPokedex(data);
-        setLoading(false);
-      } catch (e) {
-        setErrorMessage(`Looks like we can't find that type of pokemon. Refresh the page to view all of them.`);
-      }
-    };
-    fetchData();
   }, [selectedType]);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       setAlphabetized(1);
+  //       if (selectedType) setPokedex(data);
+  //       setLoading(false);
+  //     } catch (e) {
+  //       setErrorMessage(`Looks like we can't find that type of pokemon. Refresh the page to view all of them.`);
+  //     }
+  //   };
+  //   fetchData();
+  // }, [selectedType]);
 
   // useEffect(() => {
   //   const alphabetize = () => {
@@ -72,7 +76,6 @@ export default function Main() {
       if (a.pokemon.toLowerCase() > b.pokemon.toLowerCase()) return 1;
       return 0;
     });
-    console.log('1st', pokedex);
     setPokedex(pokedex);
     setAlphabetized(true);
     // console.log(pokedex);
