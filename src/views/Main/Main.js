@@ -13,7 +13,7 @@ export default function Main() {
   const [searchText, setSearchText] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(true);
-  const [alphabetized, setAlphabetized] = useState(false);
+  // const [alphabetized, setAlphabetized] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
