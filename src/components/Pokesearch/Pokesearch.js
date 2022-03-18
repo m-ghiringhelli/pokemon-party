@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Pokesearch({ setSearchText, setPokedexFromSearch }) {
+export default function Pokesearch({ setSearchText, setPokedexFromSearch, setAlphabetized }) {
   
   return (
     <div>

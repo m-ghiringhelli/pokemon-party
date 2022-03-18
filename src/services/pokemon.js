@@ -18,8 +18,8 @@ export async function fetchByType(type) {
   return data.results;
 }
 
-export async function fetchAtoZ() {
-  const resp = await fetch('https://pokedex-alchemy.herokuapp.com/api/pokedex?sort=pokemon&direction=asc');
+export async function fetchAlphabetical(direction) {
+  const resp = await fetch(`https://pokedex-alchemy.herokuapp.com/api/pokedex?sort=pokemon&direction=${direction}`);
   const data = await resp.json();
   return data.results;
 }

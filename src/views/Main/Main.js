@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchPokemon, fetchPokemonTypes, fetchByType } from '../../services/pokemon';
+import { fetchPokemon, fetchPokemonTypes, fetchByType, fetchAlphabetical } from '../../services/pokemon';
 import Pokelist from '../../components/Pokelist/Pokelist';
 import Pokeselect from '../../components/Pokeselect/Pokeselect';
 import Pokesearch from '../../components/Pokesearch/Pokesearch';
@@ -13,7 +13,7 @@ export default function Main() {
   const [searchText, setSearchText] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(true);
-  // const [alphabetized, setAlphabetized] = useState(false);
+  const [alphabetized, setAlphabetized] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,6 +43,16 @@ export default function Main() {
     fetchData();
   }, [selectedType]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      if (alphabetized) {
+        const data = await fetchAlphabetical('asc');
+        setPokedex(data);
+      }
+    };
+    fetchData();
+  }, [alphabetized]);
+
   const setPokedexFromSearch = () => {
     setPokedex(pokedex.filter(monster => {
       return monster.pokemon.includes(searchText);
@@ -55,9 +65,9 @@ export default function Main() {
     <div>
       <p>{errorMessage}</p>
       <div className='controls'>
-        <Pokeselect {...{ pokeTypes, setSelectedType }}/>
-        <Pokesearch {...{ setSearchText, searchText, setPokedex, pokedex, setPokedexFromSearch }} />
-        <Alphabetical />
+        <Pokeselect {...{ pokeTypes, setSelectedType }} />
+        <Pokesearch {...{ setSearchText, searchText, setPokedex, pokedex, setPokedexFromSearch, setAlphabetized }} />
+        <Alphabetical {...{ setAlphabetized }} />
       </div>
       <Pokelist pokedex={pokedex} />
     </div>
