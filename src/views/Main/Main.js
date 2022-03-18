@@ -33,6 +33,7 @@ export default function Main() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setAlphabetized(false);
         const data = await fetchByType(selectedType);
         if (selectedType) setPokedex(data);
         setLoading(false);
@@ -43,20 +44,39 @@ export default function Main() {
     fetchData();
   }, [selectedType]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      if (alphabetized) {
-        const data = await fetchAlphabetical('asc');
-        setPokedex(data);
-      }
-    };
-    fetchData();
-  }, [alphabetized]);
+  // useEffect(() => {
+  //   const alphabetize = () => {
+  //     if (alphabetized) {
+  //       pokedex.sort(function(a, b) {
+  //         if (a.pokemon.toLowerCase() < b.pokemon.toLowerCase()) return -1;
+  //         if (a.pokemon.toLowerCase() > b.pokemon.toLowerCase()) return 1;
+  //         return 0;
+  //       });
+  //       setPokedex(pokedex);
+  //       console.log(pokedex);
+  //     }
+  //   };
+  //   alphabetize();
+  // }, [alphabetized, pokedex]);
 
   const setPokedexFromSearch = () => {
     setPokedex(pokedex.filter(monster => {
       return monster.pokemon.includes(searchText);
     }));
+  };
+
+  const alphabetize = () => {
+    // if (alphabetized) {
+    pokedex.sort(function(a, b) {
+      if (a.pokemon.toLowerCase() < b.pokemon.toLowerCase()) return -1;
+      if (a.pokemon.toLowerCase() > b.pokemon.toLowerCase()) return 1;
+      return 0;
+    });
+    console.log('1st', pokedex);
+    setPokedex(pokedex);
+    setAlphabetized(true);
+    // console.log(pokedex);
+    // }
   };
 
   if (loading) return <div className="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>;
@@ -67,7 +87,7 @@ export default function Main() {
       <div className='controls'>
         <Pokeselect {...{ pokeTypes, setSelectedType }} />
         <Pokesearch {...{ setSearchText, searchText, setPokedex, pokedex, setPokedexFromSearch, setAlphabetized }} />
-        <Alphabetical {...{ setAlphabetized }} />
+        <Alphabetical {...{ setAlphabetized, alphabetize }} />
       </div>
       <Pokelist pokedex={pokedex} />
     </div>
