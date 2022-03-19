@@ -11,7 +11,7 @@ export default function Alphabetical({ setAlphabetized }) {
   };
 
   return (
-    <div>
+    <div className='container'>
       <p className='sort' onClick={alphabetizeAtoZ}>A to Z</p>
       <p className='sort' onClick={alphabetizeZtoA}>Z to A</p>
     </div>

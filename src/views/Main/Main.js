@@ -49,7 +49,7 @@ export default function Main() {
   if (loading) return <div className="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>;
 
   return (
-    <div>
+    <div style={{ backgroundImage: 'url(./pokebackground.jpg)' }}>
       <p>{errorMessage}</p>
       <div className='controls'>
         <Pokeselect {...{ pokeTypes, setSelectedType }} />
