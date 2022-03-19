@@ -5,3 +5,8 @@
     border-radius: 10px;
     padding: 10px;
 }
+
+.pokepicker:hover {
+    background-color: darkgrey;
+    color: white;
+}

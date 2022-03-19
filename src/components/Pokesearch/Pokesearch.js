@@ -1,4 +1,5 @@
 import React from 'react';
+import './Pokesearch.css';
 
 export default function Pokesearch({ setSearchText, setPokedexFromSearch }) {
   
