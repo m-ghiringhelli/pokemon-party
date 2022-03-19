@@ -22,10 +22,12 @@ export default function Main() {
         const typesData = await fetchPokemonTypes();
         setPokeTypes(['all', ...typesData]);
         let data = [];
+        //if type and order not selected
         if (!selectedType && !alphabetized) {
           data = await fetchPokemon();
+          //then pokedex is the unfiltered data
           setPokedex(data);
-          //if a type is chosen, filter the data
+        //if a type is chosen, filter the data
         } else if (selectedType || alphabetized) {
           data = await fetchByType(selectedType, alphabetized);
           setPokedex(data);

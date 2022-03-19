@@ -2,6 +2,7 @@ import React from 'react';
 import './Pokecard.css';
 
 export default function Pokecard({ pokedex }) {
+  //take the first 10 from the array to display
   const tenPokemon = pokedex.slice(0, 10);
   return (
     <div className="pokelist">
