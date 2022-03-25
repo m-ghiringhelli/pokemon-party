@@ -1,25 +1,23 @@
-# Alchemy React Base Template
+* PLAN BABY PLAN
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+I) fetch
+    A) pokemon
+        1) fetch API
+    B) filtered by selected
+        2) 
+II) state
+    A) pokemon []
+    B) types []
+    C) selected ''
+III) render
+    A) pokecard
+    B) dropdown
 
-Use this template for all your "from scratch" deliverables. To start, simply run
+AFTER BREAK:
+get dropdown working
+style cards
 
-- `npm install`
-- `npm start`
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+next up:
+loading state
+10 on first page
+add all option
